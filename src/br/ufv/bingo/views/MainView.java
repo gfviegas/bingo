@@ -18,7 +18,7 @@ public class MainView extends BaseView {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("templates/game.fxml"));
             Parent root = loader.load();
-            MainView controller = loader.<MainView>getController();
+//            MainView controller = loader.<MainView>getController();
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) mainPane.getScene().getWindow();

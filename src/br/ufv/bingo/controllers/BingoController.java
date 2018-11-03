@@ -5,6 +5,8 @@ import br.ufv.bingo.models.Cartela;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static br.ufv.bingo.models.Random.*;
+
 public class BingoController {
     private static BingoController ourInstance = new BingoController();
 
@@ -19,6 +21,10 @@ public class BingoController {
         inicializarJogo();
     }
 
+    public ArrayList<Cartela> getCartelasEmJogo() {
+        return cartelasEmJogo;
+    }
+
     public Cartela adicionaJogador(String nome) {
         Cartela cartela = new Cartela(nome);
         cartelasEmJogo.add(cartela);
@@ -31,35 +37,32 @@ public class BingoController {
         cartelasEmJogo = new ArrayList<Cartela>();
     }
 
-//    public void sortearNumero() {
-//        Random rand = new Random();
-//        Integer num = cartelaComputador.geraNumAleatorio();
-//
-//        while(numerosSorteados.contains(num)){
-//            num = cartelaComputador.geraNumAleatorio();
-//        }
-//        numerosSorteados.add(num);
-//        cartelaComputador.marca(num);
-//        cartelaJogador.marca(num);
-//        System.out.println("Numero sorteado : "+num);
-//    }
-//
-//    public boolean checaVitoria() {
-//        if (cartelaComputador.estaCorreto() && cartelaJogador.estaCorreto()) {
-//            System.out.println("Empate!");
-//            return true;
-//        }
-//
-//        if (cartelaComputador.estaCorreto()) {
-//            System.out.println("Máquina ganhou!");
-//            return true;
-//        }
-//
-//        if (cartelaJogador.estaCorreto()) {
-//            System.out.println("Jogador ganhou!");
-//            return true;
-//        }
-//
-//        return false;
-//    }
+    public int sortearNumero() {
+        Random rand = new Random();
+        Integer num;
+
+        do {
+            num = geraNumAleatorio();
+        } while (numerosSorteados.contains(num));
+
+
+        numerosSorteados.add(num);
+        for (Cartela c : cartelasEmJogo) {
+            c.marca(num);
+        }
+
+        System.out.println("Numero sorteado : " + num);
+
+        return num;
+    }
+
+    public ArrayList<Cartela> checaVitoria() {
+        ArrayList<Cartela> cartelasVitoriosas = new ArrayList<Cartela>();
+
+        for (Cartela c : cartelasEmJogo) {
+            if (c.estaCorreto()) cartelasVitoriosas.add(c);
+        }
+
+        return cartelasVitoriosas;
+    }
 }
