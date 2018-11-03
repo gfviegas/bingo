@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane fx:id="mainPane" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: black; -fx-border-color: gold;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufv.bingo.views.MainView">
+   <children>
+      <ImageView fitHeight="491.0" fitWidth="1090.0" layoutX="149.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/ringobanner.png" />
+         </image>
+         <effect>
+            <Blend mode="DIFFERENCE" opacity="0.89" />
+         </effect>
+      </ImageView>
+      <Label layoutX="513.0" layoutY="23.0" text="Bingo Starr" textFill="#ffdf00">
+         <font>
+            <Font name="Heiti TC Medium" size="51.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="130.0" layoutY="205.0" prefHeight="372.0" prefWidth="1020.0" text="Bem-vindo ao Bingo Starr! Para começar um novo jogo, clique no botão abaixo. As cartelas serão geradas automaticamente. Boa sorte!" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Heiti TC Light" size="34.0" />
+         </font>
+      </Label>
+      <Button layoutX="558.0" layoutY="550.0" mnemonicParsing="false" onAction="#startGame" prefHeight="60.0" prefWidth="205.0" style="-fx-background-color: darkgreen;" text="Novo Jogo" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="closeButton" cancelButton="true" graphicTextGap="1.0" layoutX="1223.0" layoutY="24.0" mnemonicParsing="false" onAction="#closeApplication" prefHeight="33.0" prefWidth="33.0" style="-fx-background-color: transparent; -fx-border-color: red; -fx-border-radius: 100%;" text="X" textFill="#830000">
+         <font>
+            <Font name="Hiragino Sans W9" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
