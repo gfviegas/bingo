@@ -10,6 +10,7 @@ import static br.ufv.bingo.models.Random.*;
 public class BingoController {
     private static BingoController ourInstance = new BingoController();
 
+    private Boolean jogoFinalizado;
     private ArrayList<Integer> numerosSorteados;
     private ArrayList<Cartela> cartelasEmJogo;
 
@@ -25,6 +26,10 @@ public class BingoController {
         return cartelasEmJogo;
     }
 
+    public ArrayList<Integer> getNumerosSorteados() {
+        return numerosSorteados;
+    }
+
     public Cartela adicionaJogador(String nome) {
         Cartela cartela = new Cartela(nome);
         cartelasEmJogo.add(cartela);
@@ -33,27 +38,39 @@ public class BingoController {
     }
 
     public void inicializarJogo() {
+        jogoFinalizado = false;
         numerosSorteados = new ArrayList<Integer>();
         cartelasEmJogo = new ArrayList<Cartela>();
     }
 
-    public int sortearNumero() {
-        Random rand = new Random();
-        Integer num;
+    public int sortearNumero() throws Exception {
+        if (numerosSorteados.size() == Cartela.MAX_NUM_CARTELA) throw new Exception("Todos os números já foram sorteados");
+        if (jogoFinalizado) throw new Exception("O jogo já foi finalizado!");
 
+
+        Integer num;
         do {
             num = geraNumAleatorio();
         } while (numerosSorteados.contains(num));
 
 
         numerosSorteados.add(num);
-        for (Cartela c : cartelasEmJogo) {
+        for (Cartela c: cartelasEmJogo) {
             c.marca(num);
+
         }
 
-        System.out.println("Numero sorteado : " + num);
-
         return num;
+    }
+
+    public void reiniciarJogo() {
+        jogoFinalizado = false;
+        numerosSorteados = new ArrayList<Integer>();
+
+
+        for (Cartela c: cartelasEmJogo) {
+            c.limpaMarcados();
+        }
     }
 
     public ArrayList<Cartela> checaVitoria() {
@@ -62,6 +79,8 @@ public class BingoController {
         for (Cartela c : cartelasEmJogo) {
             if (c.estaCorreto()) cartelasVitoriosas.add(c);
         }
+
+        jogoFinalizado = !(cartelasVitoriosas.isEmpty());
 
         return cartelasVitoriosas;
     }

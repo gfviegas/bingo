@@ -89,9 +89,7 @@ public class Cartela {
         }
         return false;
     }
-    
 
-    
     public boolean estaCorreto() {
         for (CampoNumero c : this.numeros) {
             if (!c.isMarcado()) {
@@ -101,5 +99,10 @@ public class Cartela {
 
         return true;
     }
-    
+
+    public void limpaMarcados() {
+        for (CampoNumero cn: numeros) {
+            cn.setMarcado(false);
+        }
+    }
 }
