@@ -12,6 +12,10 @@ public class Cartela {
     private final ArrayList<CampoNumero> numeros;
     private final String dono;
 
+    /**
+     * Cria uma cartela nova com números aleatórios e distintos e no final a ordena.
+     * @param dono Nome do dono da cartela
+     */
     public Cartela(String dono) {
         this.dono = dono;
         this.numeros = new ArrayList<>();
@@ -32,7 +36,9 @@ public class Cartela {
             }
         });
     }
-
+    /**
+     * Possui um número e um boolean que representa se está ou não marcado
+     */
     public class CampoNumero {
         private final Integer valor;
         private boolean marcado;
@@ -54,7 +60,7 @@ public class Cartela {
             this.marcado = marcado;
         }
     }
-
+    //gets and sets
     public ArrayList<CampoNumero> getNumeros() {
         return numeros;
     }
@@ -63,15 +69,23 @@ public class Cartela {
         return dono;
     }
 
+    /**
+     * Retorna todos os números da cartela em forma de String
+     * @return String de retorno
+     */
     @Override
     public String toString() {
         String str = "";
         for (int i = 0; i < TAM_CARTELA; i++) {
-            str = str.concat(numeros.get(i).getValor().toString()+" ");            
+            str = str.concat(numeros.get(i).getValor().toString()+" ");
         }
         return str;
     }
-    
+
+    /**
+     * Marca um número na lista se houver
+     * @param num número que precisa ser marcado
+     */
     public void marca(int num){
         for (CampoNumero c : this.numeros) {
             if (c.getValor().equals(num)) {
@@ -81,6 +95,12 @@ public class Cartela {
         }
     }
 
+    /**
+     * Função privada para verificar se um número está na lista no meio de sua criação
+     * @param  num   Número a ser verficado
+     * @param  index Índice até onde foi criado a cartela
+     * @return     Boolean que representa se é repetido ou não
+     */
     private boolean ehNumRepetido(Integer num, int index) {
         for (int i = 0; i < index; i++) {
             if (this.numeros.get(i).getValor().equals(num)) {
@@ -90,6 +110,10 @@ public class Cartela {
         return false;
     }
 
+    /**
+     * Percorre todos os campos da cartela verificando se está toda marcada
+     * @return True se está correta
+     */
     public boolean estaCorreto() {
         for (CampoNumero c : this.numeros) {
             if (!c.isMarcado()) {
@@ -100,6 +124,9 @@ public class Cartela {
         return true;
     }
 
+    /**
+     * Percorre todos os campos desmarcando-os
+     */
     public void limpaMarcados() {
         for (CampoNumero cn: numeros) {
             cn.setMarcado(false);
