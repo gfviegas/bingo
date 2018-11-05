@@ -106,7 +106,7 @@
             </AnchorPane>
             <AnchorPane fx:id="numSorteadoPane" layoutX="458.0" layoutY="281.0" prefHeight="80.0" prefWidth="349.0">
                <children>
-                  <Label fx:id="numSorteado" alignment="CENTER" layoutX="141.0" layoutY="33.0" prefHeight="49.0" prefWidth="66.0" text="0" textFill="#ffdf00">
+                  <Label fx:id="numSorteado" alignment="CENTER" layoutX="70.0" layoutY="33.0" prefHeight="49.0" prefWidth="217.0" text="0" textFill="#ffdf00">
                      <font>
                         <Font name="Kefa Regular" size="40.0" />
                      </font>

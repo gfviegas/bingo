@@ -1,0 +1,86 @@
+diff --git a/src/br/ufv/bingo/models/Cartela.java b/src/br/ufv/bingo/models/Cartela.java
+index 3beb83b..1834048 100644
+--- a/src/br/ufv/bingo/models/Cartela.java
++++ b/src/br/ufv/bingo/models/Cartela.java
+@@ -9,7 +9,7 @@ import static br.ufv.bingo.models.Random.*;
+ public class Cartela {
+     // Constantes
+     public static final int TAM_CARTELA = 10;
+-    public static final int MAX_NUM_CARTELA = 50;
++    public static final int MAX_NUM_CARTELA = 100;
+ 
+     // Atributos
+     private final ArrayList<CampoNumero> numeros;
+diff --git a/src/br/ufv/bingo/views/GameView.java b/src/br/ufv/bingo/views/GameView.java
+index 3079864..e9946f0 100644
+--- a/src/br/ufv/bingo/views/GameView.java
++++ b/src/br/ufv/bingo/views/GameView.java
+@@ -38,6 +38,10 @@ public class GameView extends BaseView {
+     @FXML
+     private GridPane gridPaneUser;
+     @FXML
++    private GridPane gridPanePC2;
++    @FXML
++    private GridPane gridPaneUser2;
++    @FXML
+     private AnchorPane numSorteadoPane;
+     @FXML
+     private AnchorPane logSorteadosPane;
+@@ -50,7 +54,9 @@ public class GameView extends BaseView {
+ 
+     private BingoController bingoController = BingoController.getInstance();
+     private Cartela cartelaPC;
++    private Cartela cartelaPC2;
+     private Cartela cartelaUser;
++    private Cartela cartelaUser2;
+ 
+     @FXML
+     private Label createLabel(String text) {
+@@ -93,16 +99,25 @@ public class GameView extends BaseView {
+         sortearButton.setDisable(false);
+     }
+ 
++    @FXML
++    private void fillCartelas() {
++        fillGridCartela(cartelaPC, gridPanePC);
++        fillGridCartela(cartelaPC2, gridPanePC2);
++        fillGridCartela(cartelaUser, gridPaneUser);
++        fillGridCartela(cartelaUser2, gridPaneUser2);
++    }
++
+     @FXML
+     public void initialize() {
+         limpaElementosJogo();
+         bingoController.inicializarJogo();
+ 
+         cartelaPC = bingoController.adicionaJogador("PC");
++        cartelaPC2 = bingoController.adicionaJogador("PC");
+         cartelaUser = bingoController.adicionaJogador("Usuário");
++        cartelaUser2 = bingoController.adicionaJogador("Usuário");
+ 
+-        fillGridCartela(cartelaPC, gridPanePC);
+-        fillGridCartela(cartelaUser, gridPaneUser);
++        fillCartelas();
+     }
+ 
+     @FXML
+@@ -115,8 +130,7 @@ public class GameView extends BaseView {
+             numSorteado.setText(String.valueOf(numero));
+             logSorteados.setText(bingoController.getNumerosSorteados().stream().map(Object::toString).collect(Collectors.joining(", ")));
+ 
+-            fillGridCartela(cartelaPC, gridPanePC);
+-            fillGridCartela(cartelaUser, gridPaneUser);
++            fillCartelas();
+             checarVitoria();
+         } catch (Exception e) {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+@@ -190,8 +204,7 @@ public class GameView extends BaseView {
+ 
+         bingoController.reiniciarJogo();
+ 
+-        fillGridCartela(cartelaPC, gridPanePC);
+-        fillGridCartela(cartelaUser, gridPaneUser);
++        fillCartelas();
+     }
+ 
+ }

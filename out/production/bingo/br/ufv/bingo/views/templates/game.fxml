@@ -23,7 +23,7 @@
                   <Font name="Heiti TC Medium" size="51.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="83.0" layoutY="170.0">
+            <AnchorPane layoutX="10.0" layoutY="170.0">
                <children>
                   <GridPane fx:id="gridPanePC" gridLinesVisible="true" layoutX="0.5" layoutY="66.0" prefHeight="350.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
                     <columnConstraints>
@@ -38,14 +38,26 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
                      </rowConstraints>
                   </GridPane>
-                  <Label alignment="TOP_LEFT" layoutX="25.5" prefHeight="23.0" prefWidth="170.0" text="Cartela do PC" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="Heiti TC Light" size="23.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="996.0" layoutY="170.0" prefHeight="416.0" prefWidth="201.0">
+            <AnchorPane layoutX="230.0" layoutY="170.0">
+               <children>
+                  <GridPane fx:id="gridPanePC2" gridLinesVisible="true" layoutX="0.5" layoutY="66.0" prefHeight="350.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1070.0" layoutY="170.0" prefHeight="416.0" prefWidth="201.0">
                <children>
                   <GridPane fx:id="gridPaneUser" gridLinesVisible="true" layoutX="0.5" layoutY="66.0" prefHeight="350.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
                      <columnConstraints>
@@ -60,11 +72,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
                      </rowConstraints>
                   </GridPane>
-                  <Label alignment="TOP_LEFT" layoutX="26.0" prefHeight="51.0" prefWidth="170.0" text="Cartela do Usuário" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="Heiti TC Light" size="23.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
             <Button fx:id="sortearButton" alignment="CENTER" layoutX="531.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#sortearNumero" prefHeight="60.0" prefWidth="208.0" style="-fx-background-color: darkgreen;" text="Sortear Número!" textFill="WHITE">
@@ -87,7 +94,7 @@
                <children>
                   <Label fx:id="logSorteados" layoutX="246.0" prefHeight="58.0" prefWidth="1001.0" text="1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25" textFill="#ffdf00" wrapText="true">
                      <font>
-                        <Font name="Kefa Regular" size="20.0" />
+                        <Font name="Kefa Regular" size="14.0" />
                      </font>
                   </Label>
                   <Label contentDisplay="CENTER" layoutY="11.0" prefHeight="23.0" prefWidth="227.0" text="Números Sorteados:" textFill="WHITE" wrapText="true">
@@ -99,7 +106,7 @@
             </AnchorPane>
             <AnchorPane fx:id="numSorteadoPane" layoutX="458.0" layoutY="281.0" prefHeight="80.0" prefWidth="349.0">
                <children>
-                  <Label fx:id="numSorteado" alignment="CENTER" layoutX="141.0" layoutY="33.0" prefHeight="49.0" prefWidth="66.0" text="0" textFill="#ffdf00">
+                  <Label fx:id="numSorteado" alignment="CENTER" layoutX="70.0" layoutY="33.0" prefHeight="49.0" prefWidth="217.0" text="0" textFill="#ffdf00">
                      <font>
                         <Font name="Kefa Regular" size="40.0" />
                      </font>
@@ -119,7 +126,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="531.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#initialize" prefHeight="60.0" prefWidth="208.0" style="-fx-background-color: darkblue;" text="Novo Jogo" textFill="WHITE">
+            <Button layoutX="531.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#novoJogo" prefHeight="60.0" prefWidth="208.0" style="-fx-background-color: darkblue;" text="Novo Jogo" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -127,6 +134,33 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Label alignment="TOP_LEFT" layoutX="125.0" layoutY="177.0" prefHeight="23.0" prefWidth="170.0" text="Cartelas do PC" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Heiti TC Light" size="23.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="850.0" layoutY="170.0" prefHeight="416.0" prefWidth="201.0">
+               <children>
+                  <GridPane fx:id="gridPaneUser2" gridLinesVisible="true" layoutX="0.5" layoutY="66.0" prefHeight="350.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <Label alignment="TOP_LEFT" layoutX="951.0" layoutY="177.0" prefHeight="23.0" prefWidth="218.0" text="Cartelas do Usuário" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Heiti TC Light" size="23.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
