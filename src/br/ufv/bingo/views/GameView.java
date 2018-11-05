@@ -38,6 +38,10 @@ public class GameView extends BaseView {
     @FXML
     private GridPane gridPaneUser;
     @FXML
+    private GridPane gridPanePC2;
+    @FXML
+    private GridPane gridPaneUser2;
+    @FXML
     private AnchorPane numSorteadoPane;
     @FXML
     private AnchorPane logSorteadosPane;
@@ -50,7 +54,9 @@ public class GameView extends BaseView {
 
     private BingoController bingoController = BingoController.getInstance();
     private Cartela cartelaPC;
+    private Cartela cartelaPC2;
     private Cartela cartelaUser;
+    private Cartela cartelaUser2;
 
     @FXML
     private Label createLabel(String text) {
@@ -94,15 +100,24 @@ public class GameView extends BaseView {
     }
 
     @FXML
+    private void fillCartelas() {
+        fillGridCartela(cartelaPC, gridPanePC);
+        fillGridCartela(cartelaPC2, gridPanePC2);
+        fillGridCartela(cartelaUser, gridPaneUser);
+        fillGridCartela(cartelaUser2, gridPaneUser2);
+    }
+
+    @FXML
     public void initialize() {
         limpaElementosJogo();
         bingoController.inicializarJogo();
 
         cartelaPC = bingoController.adicionaJogador("PC");
+        cartelaPC2 = bingoController.adicionaJogador("PC");
         cartelaUser = bingoController.adicionaJogador("Usuário");
+        cartelaUser2 = bingoController.adicionaJogador("Usuário");
 
-        fillGridCartela(cartelaPC, gridPanePC);
-        fillGridCartela(cartelaUser, gridPaneUser);
+        fillCartelas();
     }
 
     @FXML
@@ -115,8 +130,7 @@ public class GameView extends BaseView {
             numSorteado.setText(String.valueOf(numero));
             logSorteados.setText(bingoController.getNumerosSorteados().stream().map(Object::toString).collect(Collectors.joining(", ")));
 
-            fillGridCartela(cartelaPC, gridPanePC);
-            fillGridCartela(cartelaUser, gridPaneUser);
+            fillCartelas();
             checarVitoria();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -190,8 +204,7 @@ public class GameView extends BaseView {
 
         bingoController.reiniciarJogo();
 
-        fillGridCartela(cartelaPC, gridPanePC);
-        fillGridCartela(cartelaUser, gridPaneUser);
+        fillCartelas();
     }
 
 }

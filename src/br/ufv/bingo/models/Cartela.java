@@ -9,7 +9,7 @@ import static br.ufv.bingo.models.Random.*;
 public class Cartela {
     // Constantes
     public static final int TAM_CARTELA = 10;
-    public static final int MAX_NUM_CARTELA = 50;
+    public static final int MAX_NUM_CARTELA = 100;
 
     // Atributos
     private final ArrayList<CampoNumero> numeros;
